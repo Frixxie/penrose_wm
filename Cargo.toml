@@ -1,0 +1,10 @@
+[package]
+name = "penrose_wm"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+penrose = {git="https://github.com/teo8192/penrose", branch="tags-when-switching-windows"}
+simplelog = "0.8"
