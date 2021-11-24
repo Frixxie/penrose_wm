@@ -328,7 +328,7 @@ dependencies = [
 [[package]]
 name = "penrose"
 version = "0.2.0"
-source = "git+https://github.com/teo8192/penrose?branch=tags-when-switching-windows#9539ae85db22aa116552de0eac603e08681844b9"
+source = "git+https://github.com/teo8192/penrose?branch=tags-when-switching-windows#52479e3ffb954a27bcd9d4dca75fe423853a3964"
 dependencies = [
  "cairo-rs",
  "cairo-sys-rs",

@@ -73,14 +73,16 @@ winapi-x86_64-pc-windows-gnu-0.4.0
 xcb-0.9.0
 "
 
-inherit cargo
+inherit cargo git-r3
 
 DESCRIPTION="penrose_wm"
 # Double check the homepage as the cargo_metadata crate
 # does not provide this value so instead repository is used
 HOMEPAGE="homepage field in Cargo.toml inaccessible to cargo metadata"
-SRC_URI="$(cargo_crate_uris ${CRATES})"
-RESTRICT="mirror"
+
+EGIT_REPO_URI="https://github.com/Frixxie/penrose_wm.git"
+EGIT_BRANCH="master"
+
 # License set may be more restrictive as OR is not respected
 # use cargo-license for a more accurate license picture
 LICENSE="Apache-2.0 Apache-2.0 WITH LLVM-exception MIT Unlicense"
@@ -90,3 +92,20 @@ IUSE=""
 
 DEPEND=">=x11-misc/xcb-2.4-r1, >=x11-libs/cairo-1.16.0-r5, >=x11-libs/pango-1.48.10-r1"
 RDEPEND=">=x11-misc/polybar"
+
+src_unpack() {
+	git-r3_src_unpack
+	cargo_live_src_unpack
+}
+
+src_configure() {
+	cargo_src_configure --no-default-features
+}
+
+src_compile() {
+	cargo_src_compile
+}
+
+src_install() {
+	cargo_src_install
+}
