@@ -1,12 +1,21 @@
 #[macro_use]
 extern crate penrose;
 
-use penrose::{Backward, Forward, Less, More, Selector, contrib::{extensions::Scratchpad, hooks::LayoutSymbolAsRootName}, core::{
+use penrose::{
+    contrib::{extensions::Scratchpad, hooks::LayoutSymbolAsRootName},
+    core::{
         config::Config,
         helpers::index_selectors,
-        hooks::Hooks,
+        hooks::{Hook, Hooks},
         layout::{side_stack, Layout, LayoutConf},
-    }, logging_error_handler, xcb::new_xcb_backed_window_manager};
+        manager::WindowManager,
+        xconnection::XConn,
+    },
+    logging_error_handler,
+    xcb::new_xcb_backed_window_manager,
+    Backward, Forward, Less, More, Result, Selector,
+};
+use std::process::Command;
 
 use simplelog::{LevelFilter, SimpleLogger};
 
@@ -14,6 +23,25 @@ use simplelog::{LevelFilter, SimpleLogger};
 const TERMINAL: &str = "alacritty";
 const LAUNCHER: &str = "dmenu_run";
 const PASSWD: &str = "passmenu";
+
+pub struct StartupScript {
+    path: String,
+}
+impl StartupScript {
+    pub fn new(s: impl Into<String>) -> Self {
+        Self { path: s.into() }
+    }
+}
+impl<X: XConn> Hook<X> for StartupScript {
+    fn startup(&mut self, _: &mut WindowManager<X>) -> Result<()> {
+        Ok(Command::new("sh")
+            .arg("-c")
+            .arg(&self.path)
+            .spawn()
+            .map(|_| ())
+            .unwrap())
+    }
+}
 
 fn main() -> penrose::Result<()> {
     // Initialise the logger (use LevelFilter::Debug to enable debug logging)
@@ -50,7 +78,11 @@ fn main() -> penrose::Result<()> {
         .build()
         .unwrap();
 
-    let hooks: Hooks<_> = vec![sp.get_hook(), LayoutSymbolAsRootName::new()];
+    let hooks: Hooks<_> = vec![
+        sp.get_hook(),
+        LayoutSymbolAsRootName::new(),
+        Box::new(StartupScript::new("~/scripts/launch_bar.sh")),
+    ];
 
     let key_bindings = gen_keybindings! {
         // Program launchers
