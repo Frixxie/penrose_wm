@@ -6,5 +6,5 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-penrose = {git="https://github.com/teo8192/penrose", branch="tags-when-switching-windows"}
+penrose = {git="https://github.com/teo8192/penrose", branch="bugfixes"}
 simplelog = "0.8"
