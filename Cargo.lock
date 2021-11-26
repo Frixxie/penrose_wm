@@ -334,7 +334,7 @@ dependencies = [
 [[package]]
 name = "penrose"
 version = "0.2.0"
-source = "git+https://github.com/teo8192/penrose?branch=bugfixes#6330d8ca1dda0bba00dd1edf5ffb45226c41f502"
+source = "git+https://github.com/teo8192/penrose?branch=bugfixes#f7e6242178f9073c5eaccab62f0e91c86a975d90"
 dependencies = [
  "bitflags",
  "cairo-rs",
@@ -353,7 +353,7 @@ dependencies = [
 [[package]]
 name = "penrose_keysyms"
 version = "0.1.0"
-source = "git+https://github.com/teo8192/penrose?branch=bugfixes#6330d8ca1dda0bba00dd1edf5ffb45226c41f502"
+source = "git+https://github.com/teo8192/penrose?branch=bugfixes#f7e6242178f9073c5eaccab62f0e91c86a975d90"
 dependencies = [
  "strum 0.19.5",
  "strum_macros 0.19.4",
@@ -362,7 +362,7 @@ dependencies = [
 [[package]]
 name = "penrose_proc"
 version = "0.1.2"
-source = "git+https://github.com/teo8192/penrose?branch=bugfixes#6330d8ca1dda0bba00dd1edf5ffb45226c41f502"
+source = "git+https://github.com/teo8192/penrose?branch=bugfixes#f7e6242178f9073c5eaccab62f0e91c86a975d90"
 dependencies = [
  "penrose_keysyms",
  "proc-macro2",
