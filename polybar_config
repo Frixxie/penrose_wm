@@ -27,7 +27,7 @@ font-0 = Inconsolata:pixelsize=13;1
 
 modules-left = workspaces
 modules-center = window
-modules-right = weather cpu memory date
+modules-right = hevn weather cpu memory date
 
 tray-position = right
 tray-padding = 2
@@ -56,7 +56,7 @@ font-0 = Inconsolata:pixelsize=13;1
 
 modules-left = workspaces
 modules-center = window
-modules-right = weather cpu memory date
+modules-right = hevn weather cpu memory date
 
 [module/window]
 type = internal/xwindow
@@ -209,6 +209,11 @@ label = %date% %time%
 [module/weather]
 type = custom/script
 exec = "${HOME}/scripts/weather.sh"
+interval = 90
+
+[module/hevn]
+type = custom/script
+exec = "${HOME}/scripts/hevn.sh"
 interval = 90
 
 ;[module/pulseaudio]
