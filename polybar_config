@@ -208,12 +208,12 @@ label = %date% %time%
 
 [module/weather]
 type = custom/script
-exec = "${HOME}/scripts/weather.sh"
+exec = ${HOME}/scripts/weather.sh
 interval = 90
 
 [module/hevn]
 type = custom/script
-exec = "${HOME}/scripts/hevn.sh"
+exec = ${HOME}/scripts/hevn.sh
 interval = 90
 
 ;[module/pulseaudio]
